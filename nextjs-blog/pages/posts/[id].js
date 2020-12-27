@@ -1,4 +1,5 @@
 import { getAllPostIds, getPostData } from '../../lib/posts'
+import Link from 'next/link'
 import Layout from '../../components/layout'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
@@ -17,6 +18,15 @@ export default function Post({ postData }) {
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         </article>
+        <li className={utilStyles.listItem} key={id}>
+          <Link href={`/posts/${id}`}>
+            <a>{title}</a>
+          </Link>
+          <br/>
+          <small className={utilStyles.lightText}>
+            <Date dateString={date}></Date>
+          </small>
+        </li>
       </Layout>
     )
 }
